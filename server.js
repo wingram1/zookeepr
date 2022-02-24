@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const { animals } = require('./data/animals');
 
+// Heroku app name: infinite-mesa-77956
+
 function filterByQuery(query, animalsArray) {
     let filteredResults = animalsArray;
 
