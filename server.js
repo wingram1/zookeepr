@@ -10,6 +10,10 @@ app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
 
+// Provides file path to the public folder, makes contents static resources
+// All front-end code can now be accessed without having a specific server-side endpoint created for it
+app.use(express.static('public'));
+
 
 
 // Heroku app name: infinite-mesa-77956
@@ -100,6 +104,9 @@ app.get('/api/animals/:id', (req, res) => {
     }
 });
 
+
+// front-end routes
+
 app.post('/api/animals', (req, res) => {
     // set id based on what the next index of the array will be
     req.body.id = animals.length.toString();
@@ -113,6 +120,21 @@ app.post('/api/animals', (req, res) => {
     }
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.get('/animals', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+app.get('/zookeepers', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);

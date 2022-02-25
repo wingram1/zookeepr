@@ -133,6 +133,16 @@
         "culty"
       ],
       "id": "13"
+    },
+    {
+      "name": "Bob",
+      "species": "Bobanimo",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "hungry",
+        "goofy"
+      ],
+      "id": "14"
     }
   ]
 }
